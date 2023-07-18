@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Netwix</string>
+
+    <string name="Usuario">Predeterminado</string>
+    <string name="AgregarU">Agregar Usuario</string>
+    <string name="CambiarU">Cambiar de Usuario</string>
+
+    <string name="NombreU">Nombre del Usuario:</string>
+    <string name="NombreUE">Ejemplo: Lucas75</string>
+
+    <string name="Peliculas">Peliculas</string>
+
+    <string-array name="TipoPerfil">
+        <item>Seleccione Tipo de Perfil</item>
+        <item>Infantil</item>
+        <item>Adolecente</item>
+        <item>Adulto</item>
+    </string-array>
+
+    <string name="CategoriaI">Categoria: Infantil</string>
+    <string name="CategoriaA">Categoria: Adolecente</string>
+    <string name="CategoriaAD">Categoria: Adulto</string>
+
+
+</resources>
