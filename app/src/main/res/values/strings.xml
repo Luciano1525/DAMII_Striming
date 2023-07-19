@@ -10,6 +10,7 @@
 
     <string name="Peliculas">Peliculas</string>
     <string name="Media">Media</string>
+    <string name="Pelicula">Pelicula:</string>
 
     <string-array name="TipoPerfil">
         <item>Seleccione Tipo de Perfil</item>

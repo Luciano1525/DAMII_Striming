@@ -73,7 +73,9 @@
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"
-            tools:layout_editor_absoluteX="0dp" />
+            tools:layout_editor_absoluteX="0dp"
+            android:visibility="invisible"
+            />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -90,6 +92,7 @@
                 app:srcCompat="@mipmap/frozen"
                 android:scaleType="centerCrop"
                 android:adjustViewBounds="true"
+                android:visibility="invisible"
                 />
 
             <View
@@ -110,6 +113,7 @@
                 app:srcCompat="@mipmap/enredados"
                 android:scaleType="centerCrop"
                 android:adjustViewBounds="true"
+                android:visibility="invisible"
                 />
 
         </LinearLayout>
@@ -126,7 +130,9 @@
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"
-            tools:layout_editor_absoluteX="0dp" />
+            tools:layout_editor_absoluteX="0dp"
+            android:visibility="invisible"
+            />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -143,6 +149,7 @@
                 app:srcCompat="@mipmap/readyplayer"
                 android:scaleType="centerCrop"
                 android:adjustViewBounds="true"
+                android:visibility="invisible"
                 />
 
             <View
@@ -163,6 +170,7 @@
                 app:srcCompat="@mipmap/pixeles"
                 android:scaleType="centerCrop"
                 android:adjustViewBounds="true"
+                android:visibility="invisible"
                 />
 
         </LinearLayout>
@@ -180,6 +188,7 @@
             android:textSize="24sp"
             android:textStyle="bold"
             tools:layout_editor_absoluteX="0dp"
+            android:visibility="invisible"
             />
 
         <LinearLayout
@@ -197,6 +206,7 @@
                 app:srcCompat="@mipmap/anabelle"
                 android:scaleType="centerCrop"
                 android:adjustViewBounds="true"
+                android:visibility="invisible"
                 />
             <View
                 android:id="@+id/separadorad"
@@ -216,6 +226,7 @@
                 app:srcCompat="@mipmap/conjuro"
                 android:scaleType="centerCrop"
                 android:adjustViewBounds="true"
+                android:visibility="invisible"
                 />
 
         </LinearLayout>

@@ -64,8 +64,10 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences Usa = getSharedPreferences("Usuario", Context.MODE_PRIVATE);
 
-        String Usua = Usa.getString("UsuarioRegis", "No Registrado");
+        String UsuRec = Usa.getString("UsuarioRegis", "No Registrado");
         String TiUsua = Usa.getString("TipoUsuarioR", "Tipo de Usuario Null");
+        String[] UsuRe = UsuRec.split("   ");
+        String Usua = UsuRe[0]; // Recuperar solo el usuario
         tvUsuarioR.setText(Usua);
         tvTipoUsu.setText(TiUsua);
 
@@ -86,6 +88,9 @@ public class MainActivity extends AppCompatActivity {
         mediaPlayerM[2] = MediaPlayer.create(MainActivity.this, R.raw.suspenso);
 
         if (TiUsua.equals("Infantil")){
+            tvCategoria1.setVisibility(View.VISIBLE);
+            ibntnPeliI1.setVisibility(View.VISIBLE);
+            ibntnPeliI2.setVisibility(View.VISIBLE);
             tvCategoria2.setVisibility(View.GONE);
             ibntnPeliA1.setVisibility(View.GONE);
             ibntnPeliA2.setVisibility(View.GONE);
@@ -99,6 +104,12 @@ public class MainActivity extends AppCompatActivity {
             ibnMedia.setImageResource(R.mipmap.pausa);
 
         } else if (TiUsua.equals("Adolecente")){
+            tvCategoria1.setVisibility(View.VISIBLE);
+            ibntnPeliI1.setVisibility(View.VISIBLE);
+            ibntnPeliI2.setVisibility(View.VISIBLE);
+            tvCategoria2.setVisibility(View.VISIBLE);
+            ibntnPeliA1.setVisibility(View.VISIBLE);
+            ibntnPeliA2.setVisibility(View.VISIBLE);
             tvCategoria3.setVisibility(View.GONE);
             ibntnPeliAD1.setVisibility(View.GONE);
             ibntnPeliAD2.setVisibility(View.GONE);
@@ -109,6 +120,15 @@ public class MainActivity extends AppCompatActivity {
             ibnMedia.setImageResource(R.mipmap.pausa);
 
         } else if (TiUsua.equals("Adulto")){
+            tvCategoria1.setVisibility(View.VISIBLE);
+            ibntnPeliI1.setVisibility(View.VISIBLE);
+            ibntnPeliI2.setVisibility(View.VISIBLE);
+            tvCategoria2.setVisibility(View.VISIBLE);
+            ibntnPeliA1.setVisibility(View.VISIBLE);
+            ibntnPeliA2.setVisibility(View.VISIBLE);
+            tvCategoria3.setVisibility(View.VISIBLE);
+            ibntnPeliAD1.setVisibility(View.VISIBLE);
+            ibntnPeliAD2.setVisibility(View.VISIBLE);
             posicion = 2;
             //Pausar y reanudar musica
             mediaPlayerM[posicion].start();
@@ -135,6 +155,61 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Boton Pelicula Infantil 1
+        ibntnPeliI1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Metodo
+                Frozen();
+            }
+        });
+
+        //Boton Pelicula Infantil 2
+        ibntnPeliI2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Metodo
+                Enredados();
+            }
+        });
+
+
+        //Boton Pelicula Adolecente 1
+        ibntnPeliA1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Metodo
+                Ready();
+            }
+        });
+
+        //Boton Pelicula Adolecente 2
+        ibntnPeliA2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Metodo
+                Pixeles();
+            }
+        });
+
+
+        //Boton Pelicula Adulto 1
+        ibntnPeliAD1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Metodo
+                Anabelle();
+            }
+        });
+
+        //Boton Pelicula Adulto 2
+        ibntnPeliAD2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Metodo
+                Conjuro();
+            }
+        });
 
 
     }
@@ -287,24 +362,20 @@ public class MainActivity extends AppCompatActivity {
             LV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Toast.makeText(parent.getContext(), "Usuario Seleccionado: "+parent.getItemAtPosition(position).toString(), Toast.LENGTH_LONG).show();
-                    tvUsuarioR.setText(LV.getItemAtPosition(position).toString());
-
                     SharedPreferences Usa1 = getSharedPreferences("Usuario", Context.MODE_PRIVATE);
                     String cadena = LV.getItemAtPosition(position).toString();
                     String[] partes = cadena.split("   ");
 
-                    String palabra1 = partes[0]; // Primera palabra
+                    String UsuarioPe = partes[0]; // Primera palabra
                     String TipoUsuarioR = partes[1]; // Segunda palabra
-                    tvTipoUsu.setText(TipoUsuarioR);
 
-                    String UsuarioRegis = tvUsuarioR.getText().toString();
+                    String UsuarioRegis = UsuarioPe;
 
                     SharedPreferences.Editor UsaR1 = Usa1.edit();
                     UsaR1.putString("UsuarioRegis", UsuarioRegis.toString());
                     UsaR1.putString("TipoUsuarioR", TipoUsuarioR.toString());
                     UsaR1.commit();
-                    Toast.makeText(getApplicationContext(), "Bienvenido " + UsuarioRegis, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Bienvenido " + UsuarioPe, Toast.LENGTH_SHORT).show();
 
 
                     Log.i("INFO:", "Perfil");
@@ -360,5 +431,89 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+    private void Frozen(){
+        SharedPreferences Peli = getSharedPreferences("Pelicula", Context.MODE_PRIVATE);
+        String PeliculaSelect = "Frozen";
+
+        SharedPreferences.Editor editPeli = Peli.edit();
+        editPeli.putString("PeliculaSelect", PeliculaSelect.toString());
+        editPeli.commit();
+        Toast.makeText(getApplicationContext(), "Pelicula Seleccionada " + PeliculaSelect, Toast.LENGTH_SHORT).show();
+        Log.i("INFO:", "Pelicula");
+        Intent intent = new Intent(MainActivity.this, Peliculas.class);
+        startActivity(intent);
+
+    }
+
+    private void Enredados(){
+        SharedPreferences Peli = getSharedPreferences("Pelicula", Context.MODE_PRIVATE);
+        String PeliculaSelect = "Enredados";
+
+        SharedPreferences.Editor editPeli = Peli.edit();
+        editPeli.putString("PeliculaSelect", PeliculaSelect.toString());
+        editPeli.commit();
+        Toast.makeText(getApplicationContext(), "Pelicula Seleccionada " + PeliculaSelect, Toast.LENGTH_SHORT).show();
+        Log.i("INFO:", "Pelicula");
+        Intent intent = new Intent(MainActivity.this, Peliculas.class);
+        startActivity(intent);
+
+    }
+
+    private void Ready(){
+        SharedPreferences Peli = getSharedPreferences("Pelicula", Context.MODE_PRIVATE);
+        String PeliculaSelect = "Ready";
+
+        SharedPreferences.Editor editPeli = Peli.edit();
+        editPeli.putString("PeliculaSelect", PeliculaSelect.toString());
+        editPeli.commit();
+        Toast.makeText(getApplicationContext(), "Pelicula Seleccionada " + PeliculaSelect, Toast.LENGTH_SHORT).show();
+        Log.i("INFO:", "Pelicula");
+        Intent intent = new Intent(MainActivity.this, Peliculas.class);
+        startActivity(intent);
+
+    }
+
+    private void Pixeles(){
+        SharedPreferences Peli = getSharedPreferences("Pelicula", Context.MODE_PRIVATE);
+        String PeliculaSelect = "Pixeles";
+
+        SharedPreferences.Editor editPeli = Peli.edit();
+        editPeli.putString("PeliculaSelect", PeliculaSelect.toString());
+        editPeli.commit();
+        Toast.makeText(getApplicationContext(), "Pelicula Seleccionada " + PeliculaSelect, Toast.LENGTH_SHORT).show();
+        Log.i("INFO:", "Pelicula");
+        Intent intent = new Intent(MainActivity.this, Peliculas.class);
+        startActivity(intent);
+
+    }
+
+    private void Anabelle(){
+        SharedPreferences Peli = getSharedPreferences("Pelicula", Context.MODE_PRIVATE);
+        String PeliculaSelect = "Anabelle";
+
+        SharedPreferences.Editor editPeli = Peli.edit();
+        editPeli.putString("PeliculaSelect", PeliculaSelect.toString());
+        editPeli.commit();
+        Toast.makeText(getApplicationContext(), "Pelicula Seleccionada " + PeliculaSelect, Toast.LENGTH_SHORT).show();
+        Log.i("INFO:", "Pelicula");
+        Intent intent = new Intent(MainActivity.this, Peliculas.class);
+        startActivity(intent);
+
+    }
+
+    private void Conjuro(){
+        SharedPreferences Peli = getSharedPreferences("Pelicula", Context.MODE_PRIVATE);
+        String PeliculaSelect = "Conjuro";
+
+        SharedPreferences.Editor editPeli = Peli.edit();
+        editPeli.putString("PeliculaSelect", PeliculaSelect.toString());
+        editPeli.commit();
+        Toast.makeText(getApplicationContext(), "Pelicula Seleccionada " + PeliculaSelect, Toast.LENGTH_SHORT).show();
+        Log.i("INFO:", "Pelicula");
+        Intent intent = new Intent(MainActivity.this, Peliculas.class);
+        startActivity(intent);
+
+    }
 
 }
