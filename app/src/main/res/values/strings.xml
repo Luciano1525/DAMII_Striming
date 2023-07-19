@@ -9,6 +9,7 @@
     <string name="NombreUE">Ejemplo: Lucas75</string>
 
     <string name="Peliculas">Peliculas</string>
+    <string name="Media">Media</string>
 
     <string-array name="TipoPerfil">
         <item>Seleccione Tipo de Perfil</item>

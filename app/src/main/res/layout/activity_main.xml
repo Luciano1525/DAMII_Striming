@@ -234,5 +234,20 @@
         android:visibility="invisible"
         />
 
+    <ImageButton
+        android:id="@+id/ibnMedia"
+        android:layout_width="67dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="72dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/btnredondo"
+        android:contentDescription="@string/Media"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.938"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/reproducir" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

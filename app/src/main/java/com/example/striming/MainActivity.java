@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import java.util.Collections;
@@ -34,7 +35,10 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<String> Usuarios;
     private ArrayList<String> TipoUsuarios;
     private ArrayAdapter<String> adapter;
-    private ImageButton ibntnPeliI1, ibntnPeliI2, ibntnPeliA1, ibntnPeliA2, ibntnPeliAD1, ibntnPeliAD2;
+    private ImageButton ibntnPeliI1, ibntnPeliI2, ibntnPeliA1, ibntnPeliA2, ibntnPeliAD1, ibntnPeliAD2, ibnMedia;
+    private MediaPlayer mediaPlayerM [] = new MediaPlayer[3];
+    private boolean isPlaying = false;
+    private int posicion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         Usuarios = new ArrayList<>();
         TipoUsuarios = new ArrayList<>();
 
+        ibnMedia = (ImageButton) findViewById(R.id.ibnMedia);
         tvTipoUsu = (TextView) findViewById(R.id.tvTipoUsu);
         tvUsuarioR = (TextView) findViewById(R.id.tvUsuarioR);
 
@@ -76,6 +81,10 @@ public class MainActivity extends AppCompatActivity {
         ibntnPeliAD2 = (ImageButton) findViewById(R.id.ibntnPeliAD2);
 
 
+        mediaPlayerM[0] = MediaPlayer.create(MainActivity.this, R.raw.babyshark);
+        mediaPlayerM[1] = MediaPlayer.create(MainActivity.this, R.raw.voygirando);
+        mediaPlayerM[2] = MediaPlayer.create(MainActivity.this, R.raw.suspenso);
+
         if (TiUsua.equals("Infantil")){
             tvCategoria2.setVisibility(View.GONE);
             ibntnPeliA1.setVisibility(View.GONE);
@@ -83,16 +92,49 @@ public class MainActivity extends AppCompatActivity {
             tvCategoria3.setVisibility(View.GONE);
             ibntnPeliAD1.setVisibility(View.GONE);
             ibntnPeliAD2.setVisibility(View.GONE);
+            posicion = 0;
+            //Pausar y reanudar musica
+            mediaPlayerM[posicion].start();
+
+            ibnMedia.setImageResource(R.mipmap.pausa);
 
         } else if (TiUsua.equals("Adolecente")){
             tvCategoria3.setVisibility(View.GONE);
             ibntnPeliAD1.setVisibility(View.GONE);
             ibntnPeliAD2.setVisibility(View.GONE);
+            posicion = 1;
+            //Pausar y reanudar musica
+            mediaPlayerM[posicion].start();
+
+            ibnMedia.setImageResource(R.mipmap.pausa);
 
         } else if (TiUsua.equals("Adulto")){
+            posicion = 2;
+            //Pausar y reanudar musica
+            mediaPlayerM[posicion].start();
 
+            ibnMedia.setImageResource(R.mipmap.pausa);
 
+        } else {
+            ibnMedia = (ImageButton) findViewById(R.id.ibnMedia);
         }
+
+        //Boton para pausar y reanudar musica
+        ibnMedia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mediaPlayerM[posicion].isPlaying()){
+                    mediaPlayerM[posicion].pause();
+                    ibnMedia.setImageResource(R.mipmap.reproducir);
+
+                } else {
+                    mediaPlayerM[posicion].start();
+                    ibnMedia.setImageResource(R.mipmap.pausa);
+                }
+
+            }
+        });
+
 
 
     }
@@ -285,6 +327,37 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mediaPlayerM != null) {
+            mediaPlayerM[posicion].release();
+            mediaPlayerM = null;
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (mediaPlayerM != null) {
+            mediaPlayerM[posicion].pause();
+            mediaPlayerM[posicion].release();
+            mediaPlayerM = null;
+        }
+    }
+
+
+    @Override
+    protected void onStop(){
+        super.onStop();
+        if (mediaPlayerM!=null){
+            mediaPlayerM[posicion].release();
+            mediaPlayerM=null;
+        }
     }
 
 
