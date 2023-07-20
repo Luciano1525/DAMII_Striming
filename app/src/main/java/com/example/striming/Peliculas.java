@@ -1,14 +1,25 @@
 package com.example.striming;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.VideoView;
+import android.widget.MediaController;
 
 public class Peliculas extends AppCompatActivity {
-    private TextView tvPelicula;
+    private VideoView vvPelicula;
+    private Button btnSalir;
+    private MediaController Control;
+    private LinearLayout layoutVideo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,42 +28,63 @@ public class Peliculas extends AppCompatActivity {
         //Activar Toolbar
         setSupportActionBar(findViewById(R.id.toolbar));
 
-        tvPelicula = (TextView) findViewById(R.id.tvPelicula);
-
+        vvPelicula = findViewById(R.id.vvPelicula);
+        layoutVideo = findViewById(R.id.layoutVideo);
         SharedPreferences Peli = getSharedPreferences("Pelicula", Context.MODE_PRIVATE);
         String PeliSelect = Peli.getString("PeliculaSelect", "Pelicula No Existente");
 
-        if (PeliSelect.equals("Frozen")) {
-            String PeliculaSelects = "Frozen II";
-            tvPelicula.setText(PeliculaSelects);
+        int orientacion = getResources().getConfiguration().orientation;
+        if (orientacion == Configuration.ORIENTATION_LANDSCAPE) {
+            getSupportActionBar().hide();
+        } else getSupportActionBar().show();
 
-        } else if (PeliSelect.equals("Enredados")) {
-            String PeliculaSelects = "Enredados";
-            tvPelicula.setText(PeliculaSelects);
+        int Video = getVideo(PeliSelect);
+        Uri videoU = Uri.parse("android.resource://" + getPackageName() + "/" + Video);
 
-        } else if (PeliSelect.equals("Ready")) {
-            String PeliculaSelects = "Ready Player One: comienza el juego";
-            tvPelicula.setText(PeliculaSelects);
+        // Configuracion del controlador del reproductor de video
+        Control = new MediaController(this);
+        vvPelicula.setMediaController(Control);
+        Control.setAnchorView(vvPelicula);
 
-        } else if (PeliSelect.equals("Pixeles")) {
-            String PeliculaSelects = "Pixeles";
-            tvPelicula.setText(PeliculaSelects);
+        // Establece la URI del video en el VideoView
+        vvPelicula.setVideoURI(videoU);
 
-        } else if (PeliSelect.equals("Anabelle")) {
-            String PeliculaSelects = "Annabelle";
-            tvPelicula.setText(PeliculaSelects);
+        // Inicia la reproducción del video
+        vvPelicula.start();
 
-        } else if (PeliSelect.equals("Conjuro")) {
-            String PeliculaSelects = "El Conjuro";
-            tvPelicula.setText(PeliculaSelects);
-
-        } else {
-            String PeliculaSelects = "No existe Pelicula";
-            tvPelicula.setText(PeliculaSelects);
-
-        }
-
-
+        //Boton para salir
+        btnSalir = (Button) findViewById(R.id.btnSalir);
+        btnSalir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("INFO:", "Pelicula");
+                Intent intent = new Intent(Peliculas.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
+
+
+    private int getVideo(String PeliSelect) {
+        switch (PeliSelect) {
+            case "frozendos":
+                return R.raw.frozendos;
+            case "enredadospeli":
+                return R.raw.enredadospeli;
+            case "readyplayer":
+                return R.raw.readyplayer;
+            case "pixelespeli":
+                return R.raw.pixelespeli;
+            case "annable":
+                return R.raw.annable;
+            case "elconjuro":
+                return R.raw.elconjuro;
+            default:
+                return 0;
+        }
+
+    }
+
+
 }

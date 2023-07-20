@@ -434,7 +434,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void Frozen(){
         SharedPreferences Peli = getSharedPreferences("Pelicula", Context.MODE_PRIVATE);
-        String PeliculaSelect = "Frozen";
+        String PeliculaSelect = "frozendos";
 
         SharedPreferences.Editor editPeli = Peli.edit();
         editPeli.putString("PeliculaSelect", PeliculaSelect.toString());
@@ -448,7 +448,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void Enredados(){
         SharedPreferences Peli = getSharedPreferences("Pelicula", Context.MODE_PRIVATE);
-        String PeliculaSelect = "Enredados";
+        String PeliculaSelect = "enredadospeli";
 
         SharedPreferences.Editor editPeli = Peli.edit();
         editPeli.putString("PeliculaSelect", PeliculaSelect.toString());
@@ -462,7 +462,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void Ready(){
         SharedPreferences Peli = getSharedPreferences("Pelicula", Context.MODE_PRIVATE);
-        String PeliculaSelect = "Ready";
+        String PeliculaSelect = "readyplayer";
 
         SharedPreferences.Editor editPeli = Peli.edit();
         editPeli.putString("PeliculaSelect", PeliculaSelect.toString());
@@ -476,7 +476,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void Pixeles(){
         SharedPreferences Peli = getSharedPreferences("Pelicula", Context.MODE_PRIVATE);
-        String PeliculaSelect = "Pixeles";
+        String PeliculaSelect = "pixelespeli";
 
         SharedPreferences.Editor editPeli = Peli.edit();
         editPeli.putString("PeliculaSelect", PeliculaSelect.toString());
@@ -490,7 +490,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void Anabelle(){
         SharedPreferences Peli = getSharedPreferences("Pelicula", Context.MODE_PRIVATE);
-        String PeliculaSelect = "Anabelle";
+        String PeliculaSelect = "annable";
 
         SharedPreferences.Editor editPeli = Peli.edit();
         editPeli.putString("PeliculaSelect", PeliculaSelect.toString());
@@ -504,7 +504,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void Conjuro(){
         SharedPreferences Peli = getSharedPreferences("Pelicula", Context.MODE_PRIVATE);
-        String PeliculaSelect = "Conjuro";
+        String PeliculaSelect = "elconjuro";
 
         SharedPreferences.Editor editPeli = Peli.edit();
         editPeli.putString("PeliculaSelect", PeliculaSelect.toString());
