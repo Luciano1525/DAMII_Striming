@@ -23,6 +23,6 @@
     <string name="CategoriaI">Categoria: Infantil</string>
     <string name="CategoriaA">Categoria: Adolecente</string>
     <string name="CategoriaAD">Categoria: Adulto</string>
-
+    <string name="Menus">Menu</string>
 
 </resources>
