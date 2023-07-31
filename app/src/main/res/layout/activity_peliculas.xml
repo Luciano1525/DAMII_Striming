@@ -48,20 +48,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/vvPelicula" />
 
-    <ImageView
-        android:id="@+id/ibtnMePop1"
-        android:layout_width="59dp"
-        android:layout_height="59dp"
-        android:background="@drawable/btnredondo"
-        android:contentDescription="@string/Menus"
-        android:onClick="MenuPop1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.045"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.937"
-        app:srcCompat="@mipmap/menup" />
 
 
 </LinearLayout>
